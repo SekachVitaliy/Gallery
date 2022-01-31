@@ -1,2 +1,2 @@
-# Proho Album
+# Photo Album
  Photo Album App with Django
