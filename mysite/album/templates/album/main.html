@@ -1,0 +1,63 @@
+{% extends 'layout/base.html' %}
+{% block style %}
+<style>
+        .image-thumbail {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .list-group-item a {
+            text-decoration: none;
+            color: black;
+        }
+        .container{
+            margin-top: 5%;
+        }
+    </style>
+{% endblock %}
+{% block content%}
+<div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        Categories
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{% url 'main_page' %}">All</a>
+                        </li>
+                        {% for category in categories %}
+                        <li class=" list-group-item">
+                            <a href="{% url 'category_photos' category.pk %}">
+                                {{category.name}}
+                            </a>
+                        </li>
+                        {% endfor %}
+                          <a href="{% url 'add_image' %} " class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+
+                    {% for image in images %}
+                    <div class="col-md-4">
+                        <div class="card my-2">
+                            <img class="image-thumbail" src="{{image.image.url}}" alt="Card image cap">
+
+                            <div class="card-body">
+                                <small>Category: {{image.category.name}}</small>
+                            </div>
+                            <a href="{% url 'view_image' image.pk %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <h3>No photos...</h3>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
