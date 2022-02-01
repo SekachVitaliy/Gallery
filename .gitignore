@@ -1,2 +1,5 @@
 /venv
+/example
+/mysite/media
 .idea
+/mysite/db.sqlite3

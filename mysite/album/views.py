@@ -40,11 +40,11 @@ def add_image(request):
         'categories': categories
     }
     if request.method == 'POST':
-        if data['category'] != 'None':
-            category = Category.objects.get(id=data['category'])
-        elif data['category_new'] != 'None':
-            category = Category.objects.get_or_create(
-                name = data['category_new']
+        if data['category'] != 'none':
+            category = Category.objects.get(pk=data['category'])
+        elif data['category_new'] != 'none':
+            category = Category.objects.create(
+                name=data['category_new']
             )
         else:
             category = None
