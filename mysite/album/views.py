@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-from .models import Photo, Category
+from django.shortcuts import redirect, render
+
+from .models import Category, Photo
 
 
 def main_page(request):

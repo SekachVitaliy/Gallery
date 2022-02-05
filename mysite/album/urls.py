@@ -1,9 +1,10 @@
 
 
-from django.urls import path
-from .views import main_page, category_photos, view_image, add_image
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path
+
+from .views import add_image, category_photos, main_page, view_image
 
 urlpatterns = [
     path('', main_page, name='main_page'),
