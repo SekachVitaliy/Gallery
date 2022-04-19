@@ -34,10 +34,13 @@
                 {% csrf_token %}
                 <h1>Login</h1>
                 <h4>Login to view photos and share with your friends</h4>
+                 <div class="alert alert-danger">
+                     <strong>{{ error_auth|escape }}</strong>
+                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
                     <input type="text" class="form-control" name="username" id="exampleInputEmail1"
-                        aria-describedby="emailHelp">
+                           value = "{{user_auth}}" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -51,6 +54,14 @@
             <form method='post'>
                 <h1>Register</h1>
                 {% csrf_token %}
+                {% if form.errors %}
+                    {% for error in form.errors.values %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
                 {% for field in form %}
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">{{field.label}}</label>
